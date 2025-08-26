@@ -27,6 +27,8 @@ import com.crazzyghost.alphavantage.Config;
 import com.crazzyghost.alphavantage.Fetcher;
 import com.crazzyghost.alphavantage.UrlExtractor;
 import com.crazzyghost.alphavantage.parser.Parser;
+import com.crazzyghost.alphavantage.search.request.SearchRequest;
+import com.crazzyghost.alphavantage.search.response.SearchResponse;
 import okhttp3.Call;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
@@ -86,10 +88,9 @@ public final class Search implements Fetcher {
      * Using this method will overwrite any async callback
      *
      * @throws AlphaVantageException exception thrown
-     * @since 1.5.0
+     * @since 1.8.0
      */
     public SearchResponse fetchSync() throws AlphaVantageException {
-
         Config.checkNotNullOrKeyEmpty(config);
 
         this.successCallback = null;
@@ -98,21 +99,19 @@ public final class Search implements Fetcher {
 
         try (Response response = client.newCall(UrlExtractor.extract(builder.build(), config.getKey())).execute()) {
             return SearchResponse.of(Parser.parseJSON(response.body().string()));
-        } catch (IOException e) {
-            throw new AlphaVantageException(e.getMessage());
+        } catch (IOException exception) {
+            throw new AlphaVantageException(exception.getMessage());
         }
-
     }
 
     @Override
     public void fetch() {
-
         Config.checkNotNullOrKeyEmpty(config);
 
         config.getOkHttpClient().newCall(UrlExtractor.extract(builder.build(), config.getKey())).enqueue(new okhttp3.Callback() {
             @Override
-            public void onFailure(@NotNull Call call, IOException e) {
-                if (failureCallback != null) failureCallback.onFailure(new AlphaVantageException());
+            public void onFailure(@NotNull Call call, @NotNull IOException exception) {
+                if (failureCallback != null) failureCallback.onFailure(new AlphaVantageException(exception.getMessage()));
             }
 
             @Override

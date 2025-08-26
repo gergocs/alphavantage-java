@@ -1,4 +1,4 @@
-package com.crazzyghost.alphavantage.marketstatus;
+package com.crazzyghost.alphavantage.marketstatus.request;
 
 import com.crazzyghost.alphavantage.parameters.Function;
 

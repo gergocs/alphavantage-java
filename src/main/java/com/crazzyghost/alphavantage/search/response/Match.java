@@ -1,4 +1,4 @@
-package com.crazzyghost.alphavantage.search;
+package com.crazzyghost.alphavantage.search.response;
 
 import com.squareup.moshi.Json;
 

@@ -1,4 +1,4 @@
-package com.crazzyghost.alphavantage.search;
+package com.crazzyghost.alphavantage.search.request;
 
 import com.crazzyghost.alphavantage.parameters.Function;
 

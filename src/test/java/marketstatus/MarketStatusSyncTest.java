@@ -4,7 +4,7 @@ import com.crazzyghost.alphavantage.AlphaVantage;
 import com.crazzyghost.alphavantage.AlphaVantageException;
 import com.crazzyghost.alphavantage.Config;
 import com.crazzyghost.alphavantage.marketstatus.MarketStatus;
-import com.crazzyghost.alphavantage.marketstatus.MarketStatusResponse;
+import com.crazzyghost.alphavantage.marketstatus.response.MarketStatusResponse;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import okhttp3.logging.HttpLoggingInterceptor.Level;

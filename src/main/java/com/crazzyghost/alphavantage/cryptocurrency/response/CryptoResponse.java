@@ -73,7 +73,7 @@ public class CryptoResponse {
         return parser.parse(stringObjectMap);
     }
 
-    public static class CryptoParser extends DefaultParser<CryptoResponse> {
+    private static class CryptoParser extends DefaultParser<CryptoResponse> {
         public CryptoParser() {
         }
 

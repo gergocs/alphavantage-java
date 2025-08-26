@@ -20,7 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.crazzyghost.alphavantage.search;
+package com.crazzyghost.alphavantage.search.response;
 
 import com.crazzyghost.alphavantage.parser.Parser;
 
@@ -55,7 +55,7 @@ public class SearchResponse {
         return parser.parse(data);
     }
 
-    public static class MarketStatusParser extends Parser<SearchResponse> {
+    private static class MarketStatusParser extends Parser<SearchResponse> {
         @Override
         public SearchResponse onParseError(String error) {
             return new SearchResponse(error);

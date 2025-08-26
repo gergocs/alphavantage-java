@@ -26,6 +26,8 @@ import com.crazzyghost.alphavantage.AlphaVantageException;
 import com.crazzyghost.alphavantage.Config;
 import com.crazzyghost.alphavantage.Fetcher;
 import com.crazzyghost.alphavantage.UrlExtractor;
+import com.crazzyghost.alphavantage.marketstatus.request.MarketStatusRequest;
+import com.crazzyghost.alphavantage.marketstatus.response.MarketStatusResponse;
 import com.crazzyghost.alphavantage.parser.Parser;
 import okhttp3.Call;
 import okhttp3.Response;
@@ -81,7 +83,7 @@ public final class MarketStatus implements Fetcher {
      * Using this method will overwrite any async callback
      *
      * @throws AlphaVantageException exception thrown
-     * @since 1.5.0
+     * @since 1.8.0
      */
     public MarketStatusResponse fetchSync() throws AlphaVantageException {
 
@@ -106,8 +108,8 @@ public final class MarketStatus implements Fetcher {
 
         config.getOkHttpClient().newCall(UrlExtractor.extract(builder.build(), config.getKey())).enqueue(new okhttp3.Callback() {
             @Override
-            public void onFailure(@NotNull Call call, IOException e) {
-                if (failureCallback != null) failureCallback.onFailure(new AlphaVantageException());
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                if (failureCallback != null) failureCallback.onFailure(new AlphaVantageException(e.getMessage()));
             }
 
             @Override

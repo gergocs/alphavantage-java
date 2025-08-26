@@ -1,4 +1,4 @@
-package com.crazzyghost.alphavantage.marketstatus;
+package com.crazzyghost.alphavantage.marketstatus.response;
 
 import com.squareup.moshi.Json;
 

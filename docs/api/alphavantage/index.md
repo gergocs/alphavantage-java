@@ -1,8 +1,6 @@
-# alphavantage-java
+alphavantage
 
-[alphavantage](#)
-
-## Package alphavantage
+# `alphavantage-java`
 
 ### Types
 
@@ -25,6 +23,8 @@
 | [exchangerate]    | `package alphavantage.exchangerate`    |
 | [sector]          | `package alphavantage.sector`          |
 | [fundamentaldata] | `package alphavantage.fundamentaldata` |
+| [search]          | `package alphavantage.search`          |
+| [marketstatus]    | `package alphavantage.marketstatus`    |
 
 [TimeSeries]: index.md
 
@@ -34,9 +34,11 @@
 [Fetcher]: fetcher.md
 [UrlExtractor]: extractor.md
 [timeseries]: ../timeseries/index.md
-[crypto]: ../crypto/index.md
+[crypto]: ../cryptocurrency/index.md
 [indicator]: ../indicator/index.md
 [forex]: ../forex/index.md
 [exchangerate]: ../exchangerate/index.md
 [sector]: ../sector/index.md
 [fundamentaldata]: ../fundamentaldata/index.md
+[search]: ../search/index.md
+[marketstatus]: ../marketstatus/index.md
