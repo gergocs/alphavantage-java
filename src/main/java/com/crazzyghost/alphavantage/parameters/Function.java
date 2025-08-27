@@ -11,6 +11,9 @@ public enum Function {
     TIME_SERIES_MONTHLY,
     TIME_SERIES_MONTHLY_ADJUSTED,
     GLOBAL_QUOTE,
+    REALTIME_BULK_QUOTES,
+    MARKET_STATUS,
+    SYMBOL_SEARCH,
     //Exchange Rate
     CURRENCY_EXCHANGE_RATE,
     //Forex (FX) Functions
@@ -23,6 +26,7 @@ public enum Function {
     DIGITAL_CURRENCY_WEEKLY,
     DIGITAL_CURRENCY_MONTHLY,
     CRYPTO_RATING,
+    CRYPTO_INTRADAY,
     //Technical Indicators
     SMA,
     EMA,

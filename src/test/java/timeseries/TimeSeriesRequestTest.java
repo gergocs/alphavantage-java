@@ -7,12 +7,7 @@ import com.crazzyghost.alphavantage.UrlExtractor;
 import com.crazzyghost.alphavantage.parameters.DataType;
 import com.crazzyghost.alphavantage.parameters.Interval;
 import com.crazzyghost.alphavantage.parameters.OutputSize;
-import com.crazzyghost.alphavantage.timeseries.request.DailyRequest;
-import com.crazzyghost.alphavantage.timeseries.request.QuoteRequest;
-import com.crazzyghost.alphavantage.timeseries.request.IntraDayRequest;
-import com.crazzyghost.alphavantage.timeseries.request.MonthlyRequest;
-import com.crazzyghost.alphavantage.timeseries.request.TimeSeriesRequest;
-import com.crazzyghost.alphavantage.timeseries.request.WeeklyRequest;
+import com.crazzyghost.alphavantage.timeseries.request.*;
 
 import org.junit.Test;
 
@@ -89,14 +84,53 @@ public class TimeSeriesRequestTest {
     
     @Test
     public void testIntraDayRequest() {
-        String expected = "https://www.alphavantage.co/query?interval=5min&outputsize=full&function=TIME_SERIES_INTRADAY&symbol=IBM&datatype=json&apikey=demo";
+        String expected = "https://www.alphavantage.co/query?interval=5min&outputsize=full&adjusted=false&extended_hours=false&function=TIME_SERIES_INTRADAY&symbol=IBM&datatype=json&apikey=demo";
         TimeSeriesRequest request = new IntraDayRequest.Builder()
             .forSymbol("IBM")
             .dataType(DataType.JSON)
             .interval(Interval.FIVE_MIN) 
             .outputSize(OutputSize.FULL)   
             .build();
-        assertEquals(expected, Config.BASE_URL + UrlExtractor.extract(request) + "demo");   
+        assertEquals(expected, Config.BASE_URL + UrlExtractor.extract(request) + "demo");
+    }
+
+    @Test
+    public void testIntraDayRequestAdjusted() {
+        String expected = "https://www.alphavantage.co/query?interval=5min&outputsize=full&adjusted=true&extended_hours=false&function=TIME_SERIES_INTRADAY&symbol=IBM&datatype=json&apikey=demo";
+        TimeSeriesRequest request = new IntraDayRequest.Builder()
+            .forSymbol("IBM")
+            .dataType(DataType.JSON)
+            .interval(Interval.FIVE_MIN)
+            .outputSize(OutputSize.FULL)
+            .adjusted()
+            .build();
+        assertEquals(expected, Config.BASE_URL + UrlExtractor.extract(request) + "demo");
+    }
+
+    @Test
+    public void testIntraDayRequestExtendedHours() {
+        String expected = "https://www.alphavantage.co/query?interval=5min&outputsize=full&adjusted=false&extended_hours=true&function=TIME_SERIES_INTRADAY&symbol=IBM&datatype=json&apikey=demo";
+        TimeSeriesRequest request = new IntraDayRequest.Builder()
+            .forSymbol("IBM")
+            .dataType(DataType.JSON)
+            .interval(Interval.FIVE_MIN)
+            .outputSize(OutputSize.FULL)
+            .extendedHours()
+            .build();
+        assertEquals(expected, Config.BASE_URL + UrlExtractor.extract(request) + "demo");
+    }
+
+    @Test
+    public void testIntraDayRequestMonth() {
+        String expected = "https://www.alphavantage.co/query?interval=5min&outputsize=full&adjusted=false&extended_hours=false&month=2023-11&function=TIME_SERIES_INTRADAY&symbol=IBM&datatype=json&apikey=demo";
+        TimeSeriesRequest request = new IntraDayRequest.Builder()
+                .forSymbol("IBM")
+                .dataType(DataType.JSON)
+                .interval(Interval.FIVE_MIN)
+                .outputSize(OutputSize.FULL)
+                .month("2023-11")
+                .build();
+        assertEquals(expected, Config.BASE_URL + UrlExtractor.extract(request) + "demo");
     }
 
     @Test
@@ -108,6 +142,18 @@ public class TimeSeriesRequestTest {
             .build();
         assertEquals(expected, Config.BASE_URL + UrlExtractor.extract(request) + "demo");   
     }
+
+    @Test
+    public void testRealtimeBulkQuoteRequest() {
+        String expected = "https://www.alphavantage.co/query?function=REALTIME_BULK_QUOTES&symbol=IBM,MSFT&datatype=json&apikey=demo";
+        TimeSeriesRequest request = new RealtimeBulkQuoteRequest.Builder()
+                .forSymbol("IBM")
+                .forSymbol("MSFT")
+                .dataType(DataType.JSON)
+                .build();
+        assertEquals(expected, Config.BASE_URL + UrlExtractor.extract(request) + "demo");
+    }
+
 
 
 }

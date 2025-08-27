@@ -6,38 +6,27 @@ site_author: S. M. Sefa-Yeboah
 
 copyright: 'Copyright &copy; 2022 S. M. Sefa-Yeboah'
 
-nav:
-    - Overview: index.md
-    - "v1.7.0 API":
-      - alphavantage: api/alphavantage/index.md
-      - crypto: api/crypto/index.md
-      - exchangerate: api/exchangerate/index.md
-      - forex: api/forex/index.md
-      - indicator: api/indicator/index.md
-      - timeseries: api/timeseries/index.md
-      - sector: api/sector/index.md
-      - fundamentaldata: api/fundamentaldata/index.md
-      - economicindicator: api/economicindicator/index.md
-    - Recipes:
-      - Stock Time Series: timeseries.md
-      - Forex (FX): forex.md
-      - CryptoCurrencies: crypto.md
-      - Exchange Rates: exchangerate.md
-      - Technical Indicators: indicators.md
-      - Sector Performances: sector.md
-      - Fundamental Data: fundamentaldata.md
-      - Economic Indicators: economicindicator.md
-    - Changelog: changelog.md
 theme:
   name: material
-  features:
-    - instant
-  font:
-    text: "Roboto"
-    code: Roboto Mono
   palette:
-    primary: deep orange
-    accent: deep orange
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: deep orange
+      accent: deep orange
+      toggle:
+        icon: octicons/sun-24
+        name: "Switch to Dark Mode"
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep orange
+      accent: deep orange
+      toggle:
+        icon: octicons/moon-24
+        name: "Switch to Light Mode"
+  features:
+    - navigation.instant
+    - navigation.indexes
+
 extra_css:
   - css/extra.css
 
@@ -47,8 +36,89 @@ markdown_extensions:
       guess_lang: true
   - toc:
       permalink: true
-  - pymdownx.tabbed
-#  - pymdownx.highlight:
-#      guess_lang: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
   - pymdownx.superfences
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - footnotes
 
+nav:
+  - Overview: index.md
+  - "v1.8.0 API":
+      - alphavantage: api/alphavantage/index.md
+      - Crypto Currencies:
+          - api/cryptocurrency/index.md
+          - Crypto: api/cryptocurrency/crypto.md
+          - Request:
+              - api/cryptocurrency/request/index.md
+              - CryptoRequest:
+                  - api/cryptocurrency/request/crypto-request/index.md
+                  - Builder: api/cryptocurrency/request/crypto-request/builder.md
+              - DigitalCurrencyRequest:
+                  - api/cryptocurrency/request/digital-currency-request/index.md
+                  - Builder: api/cryptocurrency/request/digital-currency-request/builder.md
+              - IntradayRequest:
+                  - api/cryptocurrency/request/intraday-request/index.md
+                  - Builder: api/cryptocurrency/request/intraday-request/builder.md
+          - Response:
+              - api/cryptocurrency/response/index.md
+              - CryptoResponse:
+                  - api/cryptocurrency/response/crypto-response/index.md
+              - CryptoUnit:
+                  - api/cryptocurrency/response/crypto-unit/index.md
+                  - Builder: api/cryptocurrency/response/crypto-unit/builder.md
+              - MetaData:
+                  - api/cryptocurrency/response/meta-data/index.md
+                  - Builder: api/cryptocurrency/response/meta-data/builder.md
+      - exchangerate: api/exchangerate/index.md
+      - forex: api/forex/index.md
+      - indicator: api/indicator/index.md
+      - timeseries: api/timeseries/index.md
+      - sector: api/sector/index.md
+      - fundamentaldata: api/fundamentaldata/index.md
+      - economicindicator: api/economicindicator/index.md
+      - Global Market Status:
+          - api/marketstatus/index.md
+          - MarketStatus: api/marketstatus/marketstatus.md
+          - Request:
+              - api/marketstatus/request/index.md
+              - MarketStatusRequest:
+                  - api/marketstatus/request/market-status-request/index.md
+                  - Builder: api/marketstatus/request/market-status-request/builder.md
+          - Response:
+              - api/marketstatus/response/index.md
+              - MarketStatusResponse: api/marketstatus/response/market-status-response.md
+              - Market: api/marketstatus/response/market.md
+      - Ticker/Symbol Search:
+          - api/search/index.md
+          - Search: api/search/search.md
+          - Request:
+              - api/search/request/index.md
+              - SearchRequest:
+                  - api/search/request/search-request/index.md
+                  - Builder: api/search/request/search-request/builder.md
+          - Response:
+              - api/search/response/index.md
+              - SearchResponse: api/search/response/search-response.md
+              - Match: api/search/response/match.md
+  - Recipes:
+      - Stock Time Series: timeseries.md
+      - Forex (FX): forex.md
+      - Crypto Currencies: crypto.md
+      - Exchange Rates: exchangerate.md
+      - Technical Indicators: indicators.md
+      - Sector Performances: sector.md
+      - Fundamental Data: fundamentaldata.md
+      - Economic Indicators: economicindicator.md
+      - Global Market Status: marketstatus.md
+      - Ticker/Symbol Search: search.md
+  - Changelog: changelog.md

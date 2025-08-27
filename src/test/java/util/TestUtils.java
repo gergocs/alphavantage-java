@@ -117,7 +117,12 @@ public class TestUtils {
     public static String cryptoUrl(final String function, final String symbol){
         String sym = symbol == null ? "BTC" : symbol;
         return Config.BASE_URL + "market=CNY&function=DIGITAL_CURRENCY_"+ function.toUpperCase() + "&symbol=" + sym +"&apikey=demo";
-    };
+    }
+
+    public static String cryptoIntradayUrl(final String symbol){
+        String sym = symbol == null ? "BTC" : symbol;
+        return Config.BASE_URL + "market=CNY&function=CRYPTO_INTRADAY" + "&symbol=" + sym +"&apikey=demo";
+    }
 
     public static String cryptoRatingUrl(final String symbol){
         String sym = symbol == null ? "BTC" : symbol;
@@ -223,6 +228,22 @@ public class TestUtils {
     public static String getADOSCUrl(final String symbol){
         String sym = symbol == null ? "IBM" : symbol;
         return Config.BASE_URL + "fastperiod=3&slowperiod=10&function=ADOSC&symbol="+ sym +"&interval=daily&datatype=json&apikey=demo";    
+    }
+
+    public static String marketStatusUrl() {
+        return  Config.BASE_URL + "function=MARKET_STATUS&apikey=demo";
+    }
+
+    public static String searchUrl(final String keywords) {
+        final StringBuilder builder = new StringBuilder()
+                .append(Config.BASE_URL)
+                .append("function=SYMBOL_SEARCH");
+
+        if (keywords != null && !keywords.isEmpty()) {
+            builder.append("&keywords=").append(keywords);
+        }
+        builder.append("&apikey=demo");
+        return builder.toString();
     }
 
 
