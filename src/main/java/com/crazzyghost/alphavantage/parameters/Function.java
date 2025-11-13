@@ -103,5 +103,5 @@ public enum Function {
     DURABLES,
     UNEMPLOYMENT,
     NONFARM_PAYROLL,
-
+    NEWS_SENTIMENT,
 }
